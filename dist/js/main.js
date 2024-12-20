@@ -29,3 +29,42 @@ function changeBg(bg, title) {
     }
   });
 }
+
+const getGithubRepos = async () => {
+  const { data } = await axios.get(
+    "https://api.github.com/users/krzysztofbiolik/repos"
+  );
+
+  return data.map((repo, index) => ({
+    name: repo.name,
+    imageName: `project-${index + 1}`,
+  }));
+};
+
+const displayRepos = async () => {
+  const reposData = await getGithubRepos();
+  htmlString = "";
+
+  for (const result of reposData) {
+    console.log(
+      (htmlString += `
+        <div class="carousel-item" onclick="changeBg('${result.imageName}.jpg', '${name}')">
+          <img src="./img/${result.imageName}.jpg" alt="${result.name}" />
+        </div>
+      `)
+    );
+  }
+
+  document.querySelector(".carousel").innerHTML = htmlString;
+};
+
+
+
+displayRepos();
+
+const getGithubRepo = () => {
+  fetch("https://api.github.com/repos/krzysztofbiolik/Todos-list-react")
+    .then((res) => res.json())
+    .then((data) => data[8])
+    .then((result) => console.log(result.description));
+};
