@@ -114,11 +114,6 @@ footer {
 }
 
 .banner .carousel-box {
-  position: relative;
-  min-width: 950px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: rbga(0, 0, 0, 0.2);
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -126,19 +121,21 @@ footer {
   border-radius: 10px;
 
   .carousel {
-    position: relative;
     height: 550px;
+    min-width: 950px;
     perspective: 1500px;
 
     .carousel-item {
       width: 250px;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
 
       img {
-        max-width: 235px;
+        width: 240px;
+        height: 300px;
         border-radius: 10px;
-        transform: translateX(8px) ;
         object-fit: cover;
-        object-position: center;
       }
     }
   }
